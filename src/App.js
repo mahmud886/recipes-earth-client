@@ -10,11 +10,16 @@ import AddRecipies from './components/Pages/Recipes/AddRecipies';
 import background from './assets/images/recipes-earth-bg.jpg';
 import Recipe from './components/Pages/Recipes/Recipe';
 import RecipeDetails from './components/Pages/Recipes/RecipeDetails';
+import Profile from './components/Pages/Profile/Profile';
+import SignUp from './components/Pages/Auth/SignUp';
+import Login from './components/Pages/Auth/Login';
+
+// style={{ backgroundImage: `url(${background})` }}
 function App() {
     return (
         <>
             <div
-                className='bg-cover min-h-screen bg-fixed'
+                className='bg-cover min-h-screen bg-fixed bg-gradient-to-r from-cyan-800 to-blue-900 '
                 style={{ backgroundImage: `url(${background})` }}>
                 <div className='w-9/12 mx-auto'>
                     <Header />
@@ -34,6 +39,11 @@ function App() {
                         />
                         <Route path='recipe/all-recipes' element={<Recipe />} />
                         <Route path='recipe/:id' element={<RecipeDetails />} />
+
+                        <Route path='profile' element={<Profile />} />
+
+                        <Route path='sign-up' element={<SignUp />} />
+                        <Route path='login' element={<Login />} />
                     </Routes>
                     <ToastContainer />
                 </div>

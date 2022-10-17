@@ -36,6 +36,26 @@ const Recipe = () => {
                 <div className='flex justify-center glass  border-2 border-gray-600 rounded-lg py-20 mb-10'>
                     <h2 className=' text-5xl uppercase text-dark'>RECIPE</h2>
                 </div>
+                <div className='py-2'>
+                    <input
+                        type='text'
+                        placeholder='Search by Food Code, English Name, Bangla Name then you can find easily any Nutrition Value...'
+                        className='input input-bordered text-sm rounded-lg focus  block w-full pl-10 p-2.5 dark:placeholder '
+                    />
+                    {/* Categories Button */}
+                    <div className='flex justify-center py-3 uppercase'>
+                        <button className='btn btn-outline'>Chicken</button>
+                        <button className='btn btn-outline'>Meat</button>
+                        <button className='btn btn-outline'>Sweets</button>
+                        <button className='btn btn-outline'>Desart</button>
+                        <button className='btn btn-outline'>Lunch</button>
+                        <button className='btn btn-outline'>breakfast</button>
+                        <button className='btn btn-outline'>fastfood</button>
+                        <button className='btn btn-outline'>Snacks</button>
+                        <button className='btn btn-outline'>Biriani</button>
+                        <button className='btn btn-outline'>Indian Food</button>
+                    </div>
+                </div>
                 <div className='grid grid-cols-4 gap-4 place-content-center mx-auto'>
                     {recipes.map((singleRecipe, index) => {
                         return (

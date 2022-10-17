@@ -107,12 +107,24 @@ const Navbar = () => {
                             <ul
                                 tabIndex={0}
                                 className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'>
-                                <li>
-                                    <a>Profile</a>
-                                </li>
+                                <NavLink to='/profile'>
+                                    <li>
+                                        <a>Profile</a>
+                                    </li>
+                                </NavLink>
                                 <li>
                                     <a>Create Recipe</a>
                                 </li>
+                                <NavLink to='/login'>
+                                    <li>
+                                        <a>Login</a>
+                                    </li>
+                                </NavLink>
+                                <NavLink to='/sign-up'>
+                                    <li>
+                                        <a>Sign Up</a>
+                                    </li>
+                                </NavLink>
                                 <li>
                                     <a>Logout</a>
                                 </li>
