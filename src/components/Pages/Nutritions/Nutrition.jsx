@@ -5,6 +5,7 @@ const apiEndPoint = `http://localhost:8080/api/v1/nutritions`;
 
 const Nutrition = () => {
     const [getNutritions, setGetNutritions] = useState([]);
+
     const [searchApiFilter, setSearchApiFilter] = useState([]);
     const [filterValue, setFilterValue] = useState('');
 
