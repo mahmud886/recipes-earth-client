@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SingleNutrition = (props) => {
     const {
+        _id,
         foodCode,
         foodCategories,
         foodNameEnglish,
@@ -34,9 +36,24 @@ const SingleNutrition = (props) => {
         folate,
         vitaminC,
     } = props.nutrition;
+
+    const navigate = useNavigate();
+    const showDetailNutrition = (id) => {
+        const path = `/nutrition/${id}`;
+        navigate(path);
+    };
+
     return (
         <tr className='glass'>
+            <th>
+                <button
+                    className='btn btn-outline'
+                    onClick={() => showDetailNutrition(_id)}>
+                    Details
+                </button>
+            </th>
             <th>{foodCode}</th>
+
             <th>{foodCategories}</th>
             <th>{foodNameEnglish}</th>
             <th>{foodNameBangla}</th>

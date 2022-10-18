@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import NutritionDetail from '../Pages/Nutritions/NutritionDetail';
 import BannerSlider from './BannerSlider';
 
 const Home = () => {

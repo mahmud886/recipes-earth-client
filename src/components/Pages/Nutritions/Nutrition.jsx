@@ -83,6 +83,7 @@ const Nutrition = () => {
                     <table className='table  w-full text-center '>
                         <thead>
                             <tr className=''>
+                                <th className='py-4 px-6'>Details Button</th>
                                 <th className='py-4 px-6'>Food Code</th>
                                 <th className='py-4 px-6'>Cood Category</th>
                                 <th className='py-4 px-6'>English Name</th>
@@ -136,6 +137,7 @@ const Nutrition = () => {
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th className='py-4 px-6'>Details Button</th>
                                 <th className='py-4 px-6'>Food Code</th>
                                 <th className='py-4 px-6'>Cood Category</th>
                                 <th className='py-4 px-6'>English Name</th>
