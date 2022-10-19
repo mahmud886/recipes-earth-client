@@ -84,9 +84,11 @@ const Navbar = () => {
                                         </NavLink>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a>Item 3</a>
-                                </li>
+                                <NavLink to='/categories'>
+                                    <li>
+                                        <a>Categories</a>
+                                    </li>
+                                </NavLink>
                             </ul>
                         </div>
                     </div>

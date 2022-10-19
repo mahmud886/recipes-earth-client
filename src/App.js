@@ -14,6 +14,7 @@ import Profile from './components/Pages/Profile/Profile';
 import SignUp from './components/Pages/Auth/SignUp';
 import Login from './components/Pages/Auth/Login';
 import NutritionDetail from './components/Pages/Nutritions/NutritionDetail';
+import Categories from './components/Pages/Categories/Categories';
 
 // style={{ backgroundImage: `url(${background})` }}
 function App() {
@@ -42,6 +43,7 @@ function App() {
                             path='recipe/add-recipe'
                             element={<AddRecipies />}
                         />
+                        <Route path='categories' element={<Categories />} />
 
                         <Route path='recipe/all-recipes' element={<Recipe />} />
 
