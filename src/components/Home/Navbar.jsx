@@ -84,7 +84,7 @@ const Navbar = () => {
                                         </NavLink>
                                     </ul>
                                 </li>
-                                <NavLink to='/categories'>
+                                <NavLink to='/categories-recipe'>
                                     <li>
                                         <a>Categories</a>
                                     </li>
