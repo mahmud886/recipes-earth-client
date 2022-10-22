@@ -89,14 +89,17 @@ const Recipe = () => {
                     {cateRecipe.length === 0
                         ? 'No Recipes'
                         : recipes &&
-                          cateRecipe.map((singleRecipe, index) => {
-                              return (
-                                  <Recipes
-                                      singleRecipe={singleRecipe}
-                                      key={singleRecipe._id}
-                                  />
-                              );
-                          })}
+                          cateRecipe
+                              .sort()
+                              .reverse()
+                              .map((singleRecipe, index) => {
+                                  return (
+                                      <Recipes
+                                          singleRecipe={singleRecipe}
+                                          key={singleRecipe._id}
+                                      />
+                                  );
+                              })}
                 </div>
             </div>
         </div>

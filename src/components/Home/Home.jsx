@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NutritionDetail from '../Pages/Nutritions/NutritionDetail';
+import BreakfastPage from '../Pages/Recipes/RecipePages/BreakfastPage/BreakfastPage';
 import ChickenPage from '../Pages/Recipes/RecipePages/ChickenPage/ChickenPage';
+import DessertPage from '../Pages/Recipes/RecipePages/DessertPage/DessertPage';
 import BannerSlider from './BannerSlider';
 
 const Home = () => {
@@ -11,16 +13,24 @@ const Home = () => {
                 <div className='rounded-lg '>
                     <BannerSlider />
                 </div>
-                <div className='py-5'>
-                    <h2 className='font-normal text-center uppercase mb-10 text-2xl'>
-                        Chicken Recipes
-                    </h2>
-                    <ChickenPage />
-                </div>
 
-                <div className='py-20'>
-                    <h2 className='font-normal text-center uppercase mb-10 text-6xl'>
-                        About
+                {/* Category Recipe */}
+                <div className='divide-y divide-inherit'>
+                    <div className='py-5 mt-5'>
+                        <ChickenPage />
+                    </div>
+                    <div className='py-5 mt-5'>
+                        <BreakfastPage />
+                    </div>
+                    <div className='py-5 mt-5'>
+                        <DessertPage />
+                    </div>
+                </div>
+                {/* Category Recipe */}
+
+                <div className='py-10'>
+                    <h2 className='font-normal text-center uppercase mb-10 text-4xl'>
+                        Why Recipes Earth
                     </h2>
                     <div className='text-center justify'>
                         <p className='mx-20 text-2xl'>
@@ -46,16 +56,18 @@ const Home = () => {
                             keeping a balanced eating regimen, deliberating that
                             each one important vitamins required through the
                             frame areimport from 'react-router-dom'; covered. A
-                            right nutrients plan permit you to obtain your best
-                            weight and decrease your chance of persistent
-                            sicknesses along with diabetes, cardiovascular
-                            disease, and different cancers.
+                            right nutimport BreakfastPage from
+                            './../Pages/Recipes/RecipePages/BreakfastPage/BreakfastPage';
+                            rients plan permit you to obtain your best weight
+                            and decrease your chance of persistent sicknesses
+                            along with diabetes, cardiovascular disease, and
+                            different cancers.
                         </p>
                     </div>
                 </div>
 
-                <div className='pb-20'>
-                    <h2 className='font-normal text-center uppercase mb-10 text-6xl'>
+                <div className='py-10'>
+                    <h2 className='font-normal text-center uppercase mb-10 text-4xl'>
                         Nutrition Facts
                     </h2>
                     <div className='text-center justify'>
@@ -112,8 +124,8 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className='pb-20'>
-                    <h2 className='font-normal text-center uppercase mb-10 text-6xl'>
+                <div className='py-10'>
+                    <h2 className='font-normal text-center uppercase mb-10 text-4xl'>
                         Healthly Recipes
                     </h2>
                     <div className='text-center justify'>

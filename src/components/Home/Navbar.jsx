@@ -84,11 +84,42 @@ const Navbar = () => {
                                         </NavLink>
                                     </ul>
                                 </li>
-                                <NavLink to='/categories-recipe'>
-                                    <li>
-                                        <a>Categories</a>
-                                    </li>
-                                </NavLink>
+
+                                <li tabIndex='0'>
+                                    <a className='justify-between'>
+                                        Categories
+                                        <svg
+                                            className='fill-current'
+                                            xmlns='http://www.w3.org/2000/svg'
+                                            width='24'
+                                            height='24'
+                                            viewBox='0 0 24 24'>
+                                            <path d='M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z' />
+                                        </svg>
+                                    </a>
+                                    <ul className=' p-4 shadow bg-base-100 rounded-box w-60'>
+                                        <NavLink to='/categories-recipe'>
+                                            <li>
+                                                <a>All Categories</a>
+                                            </li>
+                                        </NavLink>
+                                        <NavLink to='/recipe/chicken-recipes'>
+                                            <li>
+                                                <a>Chicken Category</a>
+                                            </li>
+                                        </NavLink>
+                                        <NavLink to='/recipe/breakfast-recipes'>
+                                            <li>
+                                                <a>Breakfast Category</a>
+                                            </li>
+                                        </NavLink>
+                                        <NavLink to='/recipe/dessert-recipes'>
+                                            <li>
+                                                <a>Dessert Category</a>
+                                            </li>
+                                        </NavLink>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </div>

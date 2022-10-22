@@ -14,10 +14,13 @@ import Profile from './components/Pages/Profile/Profile';
 import SignUp from './components/Pages/Auth/SignUp';
 import Login from './components/Pages/Auth/Login';
 import NutritionDetail from './components/Pages/Nutritions/NutritionDetail';
-// import Categories from './components/Pages/Categories/Categories';
 import CategoriesRecipes from './components/Pages/Categories/CategoriesRecipes';
 import ChickenPageDetails from './components/Pages/Recipes/RecipePages/ChickenPage/ChickenPageDetails';
 import ChickenPage from './components/Pages/Recipes/RecipePages/ChickenPage/ChickenPage';
+import BreakfastPage from './components/Pages/Recipes/RecipePages/BreakfastPage/BreakfastPage';
+import BreakfastPageDetails from './components/Pages/Recipes/RecipePages/BreakfastPage/BreakfastPageDetails';
+import DessertPageDetails from './components/Pages/Recipes/RecipePages/DessertPage/DessertPagedetails';
+import DessertPage from './components/Pages/Recipes/RecipePages/DessertPage/DessertPage';
 
 function App() {
     return (
@@ -54,6 +57,7 @@ function App() {
                         <Route path='recipe/all-recipes' element={<Recipe />} />
 
                         <Route path='recipe/:id' element={<RecipeDetails />} />
+
                         <Route
                             path='recipe/chicken-recipes'
                             element={<ChickenPage />}
@@ -62,6 +66,25 @@ function App() {
                             path='recipe/:id'
                             element={<ChickenPageDetails />}
                         />
+
+                        <Route
+                            path='recipe/breakfast-recipes'
+                            element={<BreakfastPage />}
+                        />
+                        <Route
+                            path='recipe/:id'
+                            element={<BreakfastPageDetails />}
+                        />
+
+                        <Route
+                            path='recipe/dessert-recipes'
+                            element={<DessertPage />}
+                        />
+                        <Route
+                            path='recipe/:id'
+                            element={<DessertPageDetails />}
+                        />
+
                         <Route path='profile' element={<Profile />} />
 
                         <Route path='sign-up' element={<SignUp />} />
