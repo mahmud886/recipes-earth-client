@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NutritionDetail from '../Pages/Nutritions/NutritionDetail';
+import ChickenPage from '../Pages/Recipes/RecipePages/ChickenPage/ChickenPage';
 import BannerSlider from './BannerSlider';
 
 const Home = () => {
@@ -10,6 +11,13 @@ const Home = () => {
                 <div className='rounded-lg '>
                     <BannerSlider />
                 </div>
+                <div className='py-5'>
+                    <h2 className='font-normal text-center uppercase mb-10 text-2xl'>
+                        Chicken Recipes
+                    </h2>
+                    <ChickenPage />
+                </div>
+
                 <div className='py-20'>
                     <h2 className='font-normal text-center uppercase mb-10 text-6xl'>
                         About

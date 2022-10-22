@@ -16,8 +16,9 @@ import Login from './components/Pages/Auth/Login';
 import NutritionDetail from './components/Pages/Nutritions/NutritionDetail';
 // import Categories from './components/Pages/Categories/Categories';
 import CategoriesRecipes from './components/Pages/Categories/CategoriesRecipes';
+import ChickenPageDetails from './components/Pages/Recipes/RecipePages/ChickenPage/ChickenPageDetails';
+import ChickenPage from './components/Pages/Recipes/RecipePages/ChickenPage/ChickenPage';
 
-// style={{ backgroundImage: `url(${background})` }}
 function App() {
     return (
         <>
@@ -44,6 +45,7 @@ function App() {
                             path='recipe/add-recipe'
                             element={<AddRecipies />}
                         />
+
                         <Route
                             path='categories-recipe'
                             element={<CategoriesRecipes />}
@@ -52,7 +54,14 @@ function App() {
                         <Route path='recipe/all-recipes' element={<Recipe />} />
 
                         <Route path='recipe/:id' element={<RecipeDetails />} />
-
+                        <Route
+                            path='recipe/chicken-recipes'
+                            element={<ChickenPage />}
+                        />
+                        <Route
+                            path='recipe/:id'
+                            element={<ChickenPageDetails />}
+                        />
                         <Route path='profile' element={<Profile />} />
 
                         <Route path='sign-up' element={<SignUp />} />

@@ -22,7 +22,7 @@ const Recipes = (props) => {
     return (
         <div className='card w-80 glass'>
             <figure>
-                <img className='w-80' src={image} alt={recipeTitle} />
+                <img className='w-80 h-44' src={image} alt={recipeTitle} />
             </figure>
             <div className='card-body'>
                 <h2 className='font-normal text-xl text-center'>
