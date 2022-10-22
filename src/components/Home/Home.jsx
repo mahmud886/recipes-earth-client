@@ -25,6 +25,7 @@ const Home = () => {
                     <div className='py-5 mt-5'>
                         <DessertPage />
                     </div>
+                    <hr />
                 </div>
                 {/* Category Recipe */}
 
@@ -65,7 +66,7 @@ const Home = () => {
                         </p>
                     </div>
                 </div>
-
+                <hr />
                 <div className='py-10'>
                     <h2 className='font-normal text-center uppercase mb-10 text-4xl'>
                         Nutrition Facts
@@ -123,7 +124,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-
+                <hr />
                 <div className='py-10'>
                     <h2 className='font-normal text-center uppercase mb-10 text-4xl'>
                         Healthly Recipes

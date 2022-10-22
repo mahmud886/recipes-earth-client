@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Loading from '../../utils/Loading';
 import Recipe from '../Recipes/Recipe';
 import RecipeCategories from '../Recipes/RecipeCategories';
 
@@ -21,23 +22,26 @@ const Categories = ({ filterCategory }) => {
                         All Recipe Categories
                     </h2>
                 </div>
-
-                <div className='flex flex-wrap justify-center py-3 uppercase'>
-                    {categories.map((category, index) => {
-                        const { categoryName } = category;
-                        return (
-                            <div className='card-actions justify-center'>
-                                <button
-                                    className='btn btn-outline m-2'
-                                    onClick={() =>
-                                        filterCategory(categoryName)
-                                    }>
-                                    {categoryName}
-                                </button>
-                            </div>
-                        );
-                    })}
-                </div>
+                {categories.length === 0 ? (
+                    <Loading />
+                ) : (
+                    <div className='flex flex-wrap justify-center py-3 uppercase'>
+                        {categories.map((category, index) => {
+                            const { categoryName } = category;
+                            return (
+                                <div className='card-actions justify-center'>
+                                    <button
+                                        className='btn btn-outline m-2'
+                                        onClick={() =>
+                                            filterCategory(categoryName)
+                                        }>
+                                        {categoryName}
+                                    </button>
+                                </div>
+                            );
+                        })}
+                    </div>
+                )}
             </div>
         </div>
     );

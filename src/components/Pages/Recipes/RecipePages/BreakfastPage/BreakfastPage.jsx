@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import Loading from '../../../../utils/Loading';
 import BreakfastPages from './BreakfastPages';
 
 const BreakfastPage = () => {
-    const [BreakfastRecipes, setBreakfastRecipes] = useState([]);
+    const [breakfastRecipes, setBreakfastRecipes] = useState([]);
 
     useEffect(() => {
         fetch(`http://localhost:8080/api/v1/recipes`)
@@ -19,19 +20,24 @@ const BreakfastPage = () => {
                 <div className='py-8'>
                     <h2 className='font-normal text-3xl'>Breakfast Recipes</h2>
                 </div>
-                <div className='grid grid-cols-4 gap-4 place-content-center mx-auto'>
-                    {BreakfastRecipes &&
-                        BreakfastRecipes.filter(
-                            (recipe) => recipe.recipeCategory === recipeItem
-                        ).map((recipe, index) => {
-                            return (
-                                <BreakfastPages
-                                    recipe={recipe}
-                                    key={recipe._id}
-                                />
-                            );
-                        })}
-                </div>
+                {breakfastRecipes.length === 0 ? (
+                    <Loading />
+                ) : (
+                    <div className='grid grid-cols-4 gap-4 place-content-center mx-auto'>
+                        {breakfastRecipes
+                            .filter(
+                                (recipe) => recipe.recipeCategory === recipeItem
+                            )
+                            .map((recipe, index) => {
+                                return (
+                                    <BreakfastPages
+                                        recipe={recipe}
+                                        key={recipe._id}
+                                    />
+                                );
+                            })}
+                    </div>
+                )}
             </div>
         </>
     );

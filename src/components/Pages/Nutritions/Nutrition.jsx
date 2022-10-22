@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Loading from '../../utils/Loading';
 import SingleNutrition from './SingleNutrition';
 
 const apiEndPoint = `http://localhost:8080/api/v1/nutritions`;
@@ -82,7 +83,7 @@ const Nutrition = () => {
                 {/* ---------------SEARCH NUTRITION DATA------------------ */}
                 <div className='overflow-x-auto rounded-lg '>
                     <table className='table  w-full text-center '>
-                        <thead>
+                        <thead className='text-center justify-center mx-auto align-middle'>
                             <tr className=''>
                                 <th className='py-4 px-6'>Details Button</th>
                                 <th className='py-4 px-6'>Food Code</th>
@@ -128,14 +129,19 @@ const Nutrition = () => {
                                 <th className='py-4 px-6'>Vitamin C (mg)</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            {getNutritions.map((nutrition, index) => (
-                                <SingleNutrition
-                                    key={nutrition.foodCode}
-                                    nutrition={nutrition}
-                                />
-                            ))}
-                        </tbody>
+                        {getNutritions.length === 0 ? (
+                            <Loading />
+                        ) : (
+                            <tbody>
+                                {getNutritions.map((nutrition, index) => (
+                                    <SingleNutrition
+                                        key={nutrition.foodCode}
+                                        nutrition={nutrition}
+                                    />
+                                ))}
+                            </tbody>
+                        )}
+
                         <tfoot>
                             <tr>
                                 <th className='py-4 px-6'>Details Button</th>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import RecipeCategories from './RecipeCategories';
 import Recipes from './Recipes';
 import axios from 'axios';
+import Loading from '../../utils/Loading';
 
 const apiEndPoint = `http://localhost:8080/api/v1/recipes`;
 const Recipe = () => {
@@ -65,7 +66,7 @@ const Recipe = () => {
     };
 
     return (
-        <div className='w-12/12 mx-auto pt-2 pb-20 m-2'>
+        <div className='w-12/12 mx-auto pt-2 pb-20 m-2 text-center align-middle'>
             <div className='flex justify-center glass backdrop-blur-lg border-2 border-gray-600 rounded-lg  px-8 pt-6 pb-8 mb-4 flex-col my-2'>
                 {/* <div className='flex justify-center glass  border-2 border-gray-600 rounded-lg py-20 mb-10'>
                     <h2 className=' text-5xl uppercase text-dark'>RECIPE</h2>
@@ -84,23 +85,26 @@ const Recipe = () => {
                         categories={categories}
                     />
                 </div>
-
-                <div className='grid grid-cols-4 gap-4 place-content-center mx-auto'>
-                    {cateRecipe.length === 0
-                        ? 'No Recipes'
-                        : recipes &&
-                          cateRecipe
-                              .sort()
-                              .reverse()
-                              .map((singleRecipe, index) => {
-                                  return (
-                                      <Recipes
-                                          singleRecipe={singleRecipe}
-                                          key={singleRecipe._id}
-                                      />
-                                  );
-                              })}
-                </div>
+                {cateRecipe.length === 0 ? (
+                    'Please Select Category and Find The Recipe'
+                ) : (
+                    <div className='grid grid-cols-4 gap-4 place-content-center mx-auto'>
+                        {cateRecipe.length === 0
+                            ? 'No Recipes'
+                            : recipes &&
+                              cateRecipe
+                                  .sort()
+                                  .reverse()
+                                  .map((singleRecipe, index) => {
+                                      return (
+                                          <Recipes
+                                              singleRecipe={singleRecipe}
+                                              key={singleRecipe._id}
+                                          />
+                                      );
+                                  })}
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -35,25 +35,26 @@ const CategoriesRecipes = () => {
 
     return (
         <div className='w-12/12 mx-auto pt-2 pb-20 m-2'>
-            <div className='flex justify-center glass backdrop-blur-lg border-2 border-gray-600 rounded-lg  px-8 pt-6 pb-8 mb-4 flex-col my-2'>
+            <div className='flex text-center justify-center glass backdrop-blur-lg border-2 border-gray-600 rounded-lg  px-8 pt-6 pb-8 mb-4 flex-col my-2'>
                 <div className='py-2'>
                     {/* Categories Button */}
                     <Categories filterCategory={filterCategory} />
                 </div>
-
-                <div className='grid grid-cols-4 gap-4 place-content-center mx-auto'>
-                    {cateRecipe.length === 0
-                        ? 'No Recipes'
-                        : recipes &&
-                          cateRecipe.map((singleRecipe, index) => {
-                              return (
-                                  <Recipes
-                                      singleRecipe={singleRecipe}
-                                      key={singleRecipe._id}
-                                  />
-                              );
-                          })}
-                </div>
+                {cateRecipe.length === 0 ? (
+                    'Please Select Category and Find The Recipe'
+                ) : (
+                    <div className='grid grid-cols-4 gap-4 place-content-center mx-auto'>
+                        {recipes &&
+                            cateRecipe.map((singleRecipe, index) => {
+                                return (
+                                    <Recipes
+                                        singleRecipe={singleRecipe}
+                                        key={singleRecipe._id}
+                                    />
+                                );
+                            })}
+                    </div>
+                )}
             </div>
         </div>
     );

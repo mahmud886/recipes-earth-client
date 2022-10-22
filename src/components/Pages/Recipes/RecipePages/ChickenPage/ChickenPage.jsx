@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Loading from '../../../../utils/Loading';
 import ChickenPages from './ChickenPages';
 
 const ChickenPage = () => {
@@ -19,24 +20,29 @@ const ChickenPage = () => {
                 <div className='py-8'>
                     <h2 className='text-3xl font-normal'>Chicken Reicpes</h2>
                 </div>
-                <div className='grid grid-cols-4 gap-4 place-content-center mx-auto'>
-                    {chickenRecipes &&
-                        chickenRecipes
+                {chickenRecipes.length === 0 ? (
+                    <Loading />
+                ) : (
+                    <div className='grid grid-cols-4 gap-4 place-content-center mx-auto'>
+                        {chickenRecipes &&
+                            chickenRecipes
 
-                            .filter(
-                                (recipe) => recipe.recipeCategory === recipeItem
-                            )
-                            .sort()
-                            .reverse()
-                            .map((recipe, index) => {
-                                return (
-                                    <ChickenPages
-                                        recipe={recipe}
-                                        key={recipe._id}
-                                    />
-                                );
-                            })}
-                </div>
+                                .filter(
+                                    (recipe) =>
+                                        recipe.recipeCategory === recipeItem
+                                )
+                                .sort()
+                                .reverse()
+                                .map((recipe, index) => {
+                                    return (
+                                        <ChickenPages
+                                            recipe={recipe}
+                                            key={recipe._id}
+                                        />
+                                    );
+                                })}
+                    </div>
+                )}
             </div>
         </>
     );
