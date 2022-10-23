@@ -19,6 +19,7 @@ const AddNutrition = () => {
             .then((result) => {
                 console.log(result);
                 toast('Nutrition data successfully added..');
+                reset();
             });
     };
     return (

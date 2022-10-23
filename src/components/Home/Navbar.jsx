@@ -84,6 +84,11 @@ const Navbar = () => {
                                         </NavLink>
                                     </ul>
                                 </li>
+                                <NavLink to='/healthyRecipes/all-recipes'>
+                                    <li>
+                                        <a>Healthy Recipes</a>
+                                    </li>
+                                </NavLink>
 
                                 <li tabIndex='0'>
                                     <a className='justify-between'>

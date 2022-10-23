@@ -21,6 +21,10 @@ import BreakfastPage from './components/Pages/Recipes/RecipePages/BreakfastPage/
 import BreakfastPageDetails from './components/Pages/Recipes/RecipePages/BreakfastPage/BreakfastPageDetails';
 import DessertPageDetails from './components/Pages/Recipes/RecipePages/DessertPage/DessertPagedetails';
 import DessertPage from './components/Pages/Recipes/RecipePages/DessertPage/DessertPage';
+import AddHealthyRecipie from './components/Pages/HealthyRecipe/AddHealthyRecipe';
+import HealthyRecipe from './components/Pages/HealthyRecipe/HealthyRecipe';
+import HealthyRecipeDetails from './components/Pages/HealthyRecipe/HealthyRecipeDetails';
+import Footer from './components/Home/Footer';
 
 function App() {
     return (
@@ -52,6 +56,21 @@ function App() {
                         <Route
                             path='categories-recipe'
                             element={<CategoriesRecipes />}
+                        />
+
+                        <Route
+                            path='healthyRrecipes/add-healthy-recipe'
+                            element={<AddHealthyRecipie />}
+                        />
+
+                        <Route
+                            path='healthyRecipes/all-recipes'
+                            element={<HealthyRecipe />}
+                        />
+
+                        <Route
+                            path='healthyRecipes/:id'
+                            element={<HealthyRecipeDetails />}
                         />
 
                         <Route path='recipe/all-recipes' element={<Recipe />} />
@@ -91,6 +110,7 @@ function App() {
                         <Route path='login' element={<Login />} />
                     </Routes>
                     <ToastContainer />
+                    <Footer />
                 </div>
             </div>
         </>
