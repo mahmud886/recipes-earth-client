@@ -57,12 +57,11 @@ const Home = () => {
                             keeping a balanced eating regimen, deliberating that
                             each one important vitamins required through the
                             frame areimport from 'react-router-dom'; covered. A
-                            right nutimport BreakfastPage from
-                            './../Pages/Recipes/RecipePages/BreakfastPage/BreakfastPage';
-                            rients plan permit you to obtain your best weight
-                            and decrease your chance of persistent sicknesses
-                            along with diabetes, cardiovascular disease, and
-                            different cancers.
+                            right nutimport BreakfastPage from rients plan
+                            permit you to obtain your best weight and decrease
+                            your chance of persistent sicknesses along with
+                            diabetes, cardiovascular disease, and different
+                            cancers.
                         </p>
                     </div>
                 </div>
@@ -102,18 +101,6 @@ const Home = () => {
                         </p>
 
                         <div className='flex justify-center m-2'>
-                            <NavLink to='/nutritons' className='ml-2'>
-                                <button className='btn btn-outline'>
-                                    Nutriton Page
-                                </button>
-                            </NavLink>
-                            <NavLink
-                                to='/nutritons-guidelines'
-                                className='ml-2'>
-                                <button className='btn btn-outline'>
-                                    Nutrition Guidelines
-                                </button>
-                            </NavLink>
                             <NavLink
                                 to='/nutrition/all-nutritions'
                                 className='ml-2'>
@@ -151,7 +138,9 @@ const Home = () => {
                         </p>
 
                         <div className='flex justify-center m-2'>
-                            <NavLink to='/healty-recipes' className='ml-2'>
+                            <NavLink
+                                to='healthyRecipes/all-recipes'
+                                className='ml-2'>
                                 <button className='btn btn-outline'>
                                     Healthy Recipes
                                 </button>

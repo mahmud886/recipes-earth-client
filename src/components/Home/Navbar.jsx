@@ -139,7 +139,7 @@ const Navbar = () => {
                                 tabIndex={0}
                                 className='btn btn-ghost btn-circle avatar'>
                                 <div className='w-10 rounded-full'>
-                                    <img src='https://placeimg.com/80/80/people' />
+                                    <img src='https://i.ibb.co/9nF3hPN/photographs-of-Iqbal-Mahmud.jpg' />
                                 </div>
                             </label>
                             <ul
