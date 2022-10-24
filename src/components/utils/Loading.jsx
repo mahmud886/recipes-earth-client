@@ -5,7 +5,7 @@ import './Loading.css';
 
 const Loading = () => {
     return (
-        <div class='flex'>
+        <div class='flex justify-center align-middle text-center'>
             <RotatingLines
                 strokeColor='grey'
                 strokeWidth='5'
