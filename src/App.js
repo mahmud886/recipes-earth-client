@@ -10,7 +10,7 @@ import AddRecipies from './components/Pages/Recipes/AddRecipies';
 import background from './assets/images/recipes-earth-bg.jpg';
 import Recipe from './components/Pages/Recipes/Recipe';
 import RecipeDetails from './components/Pages/Recipes/RecipeDetails';
-import Profile from './components/Pages/Profile/Profile';
+import Profile from './components/Pages/Auth/Profile/Profile';
 import SignUp from './components/Pages/Auth/SignUp';
 import Login from './components/Pages/Auth/Login';
 import NutritionDetail from './components/Pages/Nutritions/NutritionDetail';
@@ -25,6 +25,7 @@ import AddHealthyRecipie from './components/Pages/HealthyRecipe/AddHealthyRecipe
 import HealthyRecipe from './components/Pages/HealthyRecipe/HealthyRecipe';
 import HealthyRecipeDetails from './components/Pages/HealthyRecipe/HealthyRecipeDetails';
 import Footer from './components/Home/Footer';
+import RequireAuth from './components/Pages/Auth/RequireAuth';
 
 function App() {
     return (
@@ -36,9 +37,14 @@ function App() {
                     <Header />
                     <Routes>
                         <Route path='/' element={<Home />}></Route>
+
                         <Route
                             path='nutrition/add-nutrition'
-                            element={<AddNutrition />}
+                            element={
+                                <RequireAuth>
+                                    <AddNutrition />
+                                </RequireAuth>
+                            }
                         />
                         <Route
                             path='nutrition/all-nutritions'
@@ -50,7 +56,11 @@ function App() {
                         />
                         <Route
                             path='recipe/add-recipe'
-                            element={<AddRecipies />}
+                            element={
+                                <RequireAuth>
+                                    <AddRecipies />
+                                </RequireAuth>
+                            }
                         />
 
                         <Route
@@ -104,7 +114,14 @@ function App() {
                             element={<DessertPageDetails />}
                         />
 
-                        <Route path='profile' element={<Profile />} />
+                        <Route
+                            path='profile'
+                            element={
+                                <RequireAuth>
+                                    <Profile />
+                                </RequireAuth>
+                            }
+                        />
 
                         <Route path='sign-up' element={<SignUp />} />
                         <Route path='login' element={<Login />} />

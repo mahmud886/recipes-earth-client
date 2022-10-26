@@ -1,7 +1,65 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useRef } from 'react';
+import {
+    useSendPasswordResetEmail,
+    useSignInWithEmailAndPassword,
+} from 'react-firebase-hooks/auth';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import SocialLogin from './SocialLogin';
+import auth from './../../../firebase.int';
+import Loading from '../../utils/Loading';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+    const emailRef = useRef('');
+    const passwordRef = useRef('');
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    let from = location.state?.from?.pathname || '/';
+
+    let errorElement;
+
+    const [signInWithEmailAndPassword, user, loading, error] =
+        useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+
+    if (loading || sending) {
+        return <Loading />;
+    }
+    if (user) {
+        navigate(from, { replace: true });
+    }
+    if (error) {
+        errorElement = (
+            <div>
+                <p className='bg-error'>Error: {error.message}</p>
+            </div>
+        );
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+
+        signInWithEmailAndPassword(email, password);
+        toast('Successfully Logged In');
+    };
+
+    const navigateRegister = (event) => {
+        navigate('/register');
+    };
+
+    const resetPassword = async () => {
+        const email = emailRef.current.value;
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Sent email');
+        } else {
+            toast('please enter your email address');
+        }
+    };
+
     return (
         <div className='w-12/12 mx-auto pt-2 pb-20 m-2'>
             <div className='flex justify-center glass backdrop-blur-lg border-2 border-gray-600 rounded-lg  px-8 pt-6 pb-8 mb-4 flex-col my-2'>
@@ -24,12 +82,15 @@ const Login = () => {
                                 setting up your profile.
                             </p>
 
-                            <form className='grid grid-cols-1 gap-6 mt-8 md:grid-cols-2'>
+                            <form
+                                onSubmit={handleSubmit}
+                                className='grid grid-cols-1 gap-6 mt-8 md:grid-cols-2'>
                                 <div>
                                     <label className='block mb-2 text-sm'>
                                         Email address
                                     </label>
                                     <input
+                                        ref={emailRef}
                                         type='email'
                                         placeholder='johnsnow@example.com'
                                         className='block input input-bordered w-full max-w-xs'
@@ -41,36 +102,39 @@ const Login = () => {
                                         Password
                                     </label>
                                     <input
+                                        ref={passwordRef}
                                         type='password'
                                         placeholder='Enter your password'
                                         className='block input input-bordered w-full max-w-xs'
                                     />
                                 </div>
 
-                                <button className='flex items-center justify-between px-6 py-3 text-sm tracking-wide  btn btn-outline btn-ghost'>
+                                <button
+                                    type='submit'
+                                    className='flex items-center justify-between px-6 py-3 text-sm tracking-wide  btn btn-outline btn-ghost'>
                                     <span>Sign In </span>
-
-                                    <svg
-                                        xmlns='http://www.w3.org/2000/svg'
-                                        className='w-5 h-5 rtl:-scale-x-100'
-                                        viewBox='0 0 20 20'
-                                        fill='currentColor'>
-                                        <path
-                                            fill-rule='evenodd'
-                                            d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z'
-                                            clip-rule='evenodd'
-                                        />
-                                    </svg>
                                 </button>
-                                <p class='text-sm font-semibold mt-2 pt-1 mb-0'>
+                                {errorElement}
+                                <p className='text-sm font-semibold mt-2 pt-1 mb-0'>
                                     Don't have an account? Please | &nbsp;
                                     <NavLink
                                         to='/sign-up'
-                                        class='text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out'>
+                                        className='text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out'>
                                         Register
                                     </NavLink>
                                 </p>
+                                <p>
+                                    Forget Password? <br />
+                                    <button
+                                        className='btn btn-outline'
+                                        onClick={resetPassword}>
+                                        Reset Password
+                                    </button>{' '}
+                                </p>
                             </form>
+                            <div>
+                                <SocialLogin />
+                            </div>
                         </div>
                     </div>
                 </div>

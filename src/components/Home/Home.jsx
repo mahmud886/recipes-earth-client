@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import NutritionDetail from '../Pages/Nutritions/NutritionDetail';
 import BreakfastPage from '../Pages/Recipes/RecipePages/BreakfastPage/BreakfastPage';
 import ChickenPage from '../Pages/Recipes/RecipePages/ChickenPage/ChickenPage';
 import DessertPage from '../Pages/Recipes/RecipePages/DessertPage/DessertPage';

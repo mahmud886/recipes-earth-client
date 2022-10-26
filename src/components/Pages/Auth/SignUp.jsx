@@ -1,7 +1,44 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import {
+    useCreateUserWithEmailAndPassword,
+    useUpdateProfile,
+} from 'react-firebase-hooks/auth';
+import { NavLink, useNavigate } from 'react-router-dom';
+import auth from '../../../firebase.int';
+import Loading from '../../utils/Loading';
+import SocialLogin from './SocialLogin';
 
 const SignUp = () => {
+    const [createUserWithEmailAndPassword, user, loading, error] =
+        useCreateUserWithEmailAndPassword(auth);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+    const navigate = useNavigate();
+    const navigateLogin = () => {
+        navigate('/login');
+    };
+
+    if (loading || updating) {
+        return <Loading />;
+    }
+
+    if (user) {
+        console.log('user', user);
+    }
+
+    const handleRegister = async (event) => {
+        event.preventDefault();
+        const name = event.target.name.value;
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        // const agree = event.target.terms.checked;
+
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
+        console.log('Updated profile');
+        navigate('/');
+    };
+
     return (
         <div className='w-12/12 mx-auto pt-2 pb-20 m-2'>
             <div className='flex justify-center glass backdrop-blur-lg border-2 border-gray-600 rounded-lg  px-8 pt-6 pb-8 mb-4 flex-col my-2'>
@@ -24,36 +61,17 @@ const SignUp = () => {
                                 profile.
                             </p>
 
-                            <form className='grid grid-cols-1 gap-6 mt-8 md:grid-cols-2'>
+                            <form
+                                onSubmit={handleRegister}
+                                className='grid grid-cols-1 gap-6 mt-8 md:grid-cols-2'>
                                 <div>
                                     <label className='block mb-2 text-sm '>
-                                        First Name
+                                        Enter Name
                                     </label>
                                     <input
                                         type='text'
-                                        placeholder='John'
-                                        className='block input input-bordered w-full max-w-xs'
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className='block mb-2 text-sm'>
-                                        Last name
-                                    </label>
-                                    <input
-                                        type='text'
-                                        placeholder='Snow'
-                                        className='block input input-bordered w-full max-w-xs'
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className='block mb-2 text-sm'>
-                                        Phone number
-                                    </label>
-                                    <input
-                                        type='text'
-                                        placeholder='XXX-XX-XXXX-XXX'
+                                        name='name'
+                                        placeholder='John Wick'
                                         className='block input input-bordered w-full max-w-xs'
                                     />
                                 </div>
@@ -64,6 +82,7 @@ const SignUp = () => {
                                     </label>
                                     <input
                                         type='email'
+                                        name='email'
                                         placeholder='johnsnow@example.com'
                                         className='block input input-bordered w-full max-w-xs'
                                     />
@@ -75,46 +94,28 @@ const SignUp = () => {
                                     </label>
                                     <input
                                         type='password'
+                                        name='password'
                                         placeholder='Enter your password'
                                         className='block input input-bordered w-full max-w-xs'
                                     />
                                 </div>
 
-                                <div>
-                                    <label className='block mb-2 text-sm'>
-                                        Confirm password
-                                    </label>
-                                    <input
-                                        type='password'
-                                        placeholder='Enter your password'
-                                        className='block input input-bordered w-full max-w-xs'
-                                    />
-                                </div>
-
+                                <br />
                                 <button className='flex items-center justify-between px-6 py-3 text-sm tracking-wide  btn btn-outline btn-ghost'>
                                     <span>Sign Up </span>
-
-                                    <svg
-                                        xmlns='http://www.w3.org/2000/svg'
-                                        className='w-5 h-5 rtl:-scale-x-100'
-                                        viewBox='0 0 20 20'
-                                        fill='currentColor'>
-                                        <path
-                                            fill-rule='evenodd'
-                                            d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z'
-                                            clip-rule='evenodd'
-                                        />
-                                    </svg>
                                 </button>
-                                <p class='text-sm font-semibold mt-2 pt-1 mb-0'>
+                                <p className='text-sm font-semibold mt-2 pt-1 mb-0'>
                                     Already have an account! Please |&nbsp;
                                     <NavLink
                                         to='/login'
-                                        class='text-green-600 hover:text-green-700 focus:text-green-700 transition duration-200 ease-in-out'>
+                                        className='text-green-600 hover:text-green-700 focus:text-green-700 transition duration-200 ease-in-out'>
                                         Login
                                     </NavLink>
                                 </p>
                             </form>
+                            <div>
+                                <SocialLogin />
+                            </div>
                         </div>
                     </div>
                 </div>

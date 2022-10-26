@@ -1,7 +1,22 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import auth from '../../firebase.int';
+import { signOut } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Navbar = () => {
+    let [user] = useAuthState(auth);
+
+    const handleSignOut = () => {
+        signOut(auth);
+    };
+
+    user = auth.currentUser;
+
+    const displayName = user?.displayName;
+    const email = user?.email;
+    const photoURL = user?.photoURL;
+
     return (
         <div className='py-2 sticky top-2 z-10 glass rounded-lg uppercase font-bold'>
             <div className=''>
@@ -139,7 +154,7 @@ const Navbar = () => {
                                 tabIndex={0}
                                 className='btn btn-ghost btn-circle avatar'>
                                 <div className='w-10 rounded-full'>
-                                    <img src='https://i.ibb.co/9nF3hPN/photographs-of-Iqbal-Mahmud.jpg' />
+                                    <img src={photoURL} alt={displayName} />
                                 </div>
                             </label>
                             <ul
@@ -153,19 +168,18 @@ const Navbar = () => {
                                 <li>
                                     <a>Create Recipe</a>
                                 </li>
-                                <NavLink to='/login'>
+
+                                {user ? (
                                     <li>
-                                        <a>Login</a>
+                                        <a onClick={handleSignOut}>Logout</a>
                                     </li>
-                                </NavLink>
-                                <NavLink to='/sign-up'>
-                                    <li>
-                                        <a>Sign Up</a>
-                                    </li>
-                                </NavLink>
-                                <li>
-                                    <a>Logout</a>
-                                </li>
+                                ) : (
+                                    <NavLink to='/login'>
+                                        <li>
+                                            <a>Login</a>
+                                        </li>
+                                    </NavLink>
+                                )}
                             </ul>
                         </div>
                     </div>
